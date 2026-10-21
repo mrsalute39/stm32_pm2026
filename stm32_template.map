@@ -122,6 +122,8 @@ Discarded input sections
  .text          0x00000000        0x0 CMakeFiles/stm32_template.dir/main.c.o
  .data          0x00000000        0x0 CMakeFiles/stm32_template.dir/main.c.o
  .bss           0x00000000        0x0 CMakeFiles/stm32_template.dir/main.c.o
+ .text.SPI1_Read
+                0x00000000       0x40 CMakeFiles/stm32_template.dir/main.c.o
  .debug_macro   0x00000000      0xaba CMakeFiles/stm32_template.dir/main.c.o
  .debug_macro   0x00000000      0x34e CMakeFiles/stm32_template.dir/main.c.o
  .debug_macro   0x00000000       0x56 CMakeFiles/stm32_template.dir/main.c.o
@@ -153,7 +155,7 @@ Linker script and memory map
                 0x0800fc00                        __mcu_flash_eeprom_offset = (__mcu_flash_rom_offset + __mcu_flash_rom_size)
                 0x20005000                        _estack = (__mcu_ram_offset + __mcu_ram_size)
 
-.text           0x08000000      0x41c
+.text           0x08000000      0x5a4
  *(.isr_vector .isr_vector.*)
  .isr_vector    0x08000000      0x10c CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
                 0x08000000                g_pfnVectors
@@ -226,40 +228,54 @@ Linker script and memory map
                 0x080001e8      0x100 CMakeFiles/stm32_template.dir/stm32/system_stm32f10x.c.o
  .text.delay    0x080002e8       0x2c CMakeFiles/stm32_template.dir/main.c.o
                 0x080002e8                delay
- .text.button_pressed
-                0x08000314       0x34 CMakeFiles/stm32_template.dir/main.c.o
- .text.main     0x08000348       0xc4 CMakeFiles/stm32_template.dir/main.c.o
-                0x08000348                main
+ .text.SPI1_Init
+                0x08000314       0x68 CMakeFiles/stm32_template.dir/main.c.o
+                0x08000314                SPI1_Init
+ .text.SPI1_Write
+                0x0800037c       0x44 CMakeFiles/stm32_template.dir/main.c.o
+                0x0800037c                SPI1_Write
+ .text.display_cmd
+                0x080003c0       0x3c CMakeFiles/stm32_template.dir/main.c.o
+                0x080003c0                display_cmd
+ .text.display_data
+                0x080003fc       0x3c CMakeFiles/stm32_template.dir/main.c.o
+                0x080003fc                display_data
+ .text.display_init
+                0x08000438       0xcc CMakeFiles/stm32_template.dir/main.c.o
+                0x08000438                display_init
+ .text.display_chessboard
+                0x08000504       0x8e CMakeFiles/stm32_template.dir/main.c.o
+                0x08000504                display_chessboard
+ .text.main     0x08000592       0x12 CMakeFiles/stm32_template.dir/main.c.o
+                0x08000592                main
  *(.glue_7t)
- .glue_7t       0x0800040c        0x0 linker stubs
+ .glue_7t       0x080005a4        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x0800040c        0x0 linker stubs
+ .glue_7        0x080005a4        0x0 linker stubs
  *(.rodata .rodata* .gnu.linkonce.r.*)
- .rodata.half_period
-                0x0800040c       0x10 CMakeFiles/stm32_template.dir/main.c.o
 
-.vfp11_veneer   0x0800041c        0x0
- .vfp11_veneer  0x0800041c        0x0 linker stubs
+.vfp11_veneer   0x080005a4        0x0
+ .vfp11_veneer  0x080005a4        0x0 linker stubs
 
-.v4_bx          0x0800041c        0x0
- .v4_bx         0x0800041c        0x0 linker stubs
+.v4_bx          0x080005a4        0x0
+ .v4_bx         0x080005a4        0x0 linker stubs
 
-.iplt           0x0800041c        0x0
- .iplt          0x0800041c        0x0 CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
+.iplt           0x080005a4        0x0
+ .iplt          0x080005a4        0x0 CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
 
-.rel.dyn        0x0800041c        0x0
- .rel.iplt      0x0800041c        0x0 CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
+.rel.dyn        0x080005a4        0x0
+ .rel.iplt      0x080005a4        0x0 CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x0800041c                        . = ALIGN (0x4)
-                0x0800041c                        _etext = .
-                0x0800041c                        _sidata = .
+                0x080005a4                        . = ALIGN (0x4)
+                0x080005a4                        _etext = .
+                0x080005a4                        _sidata = .
 
-.data           0x20000000        0x0 load address 0x0800041c
+.data           0x20000000        0x0 load address 0x080005a4
                 0x20000000                        _sdata = .
  *(.data .data.*)
                 0x20000000                        . = ALIGN (0x4)
@@ -293,34 +309,34 @@ LOAD CMakeFiles/stm32_template.dir/main.c.o
 OUTPUT(build/stm32_template.elf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x00000000      0x7e8
+.debug_info     0x00000000      0x98b
  .debug_info    0x00000000      0x109 CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
  .debug_info    0x00000109      0x462 CMakeFiles/stm32_template.dir/stm32/system_stm32f10x.c.o
- .debug_info    0x0000056b      0x27d CMakeFiles/stm32_template.dir/main.c.o
+ .debug_info    0x0000056b      0x420 CMakeFiles/stm32_template.dir/main.c.o
 
-.debug_abbrev   0x00000000      0x3c7
+.debug_abbrev   0x00000000      0x410
  .debug_abbrev  0x00000000       0xee CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
  .debug_abbrev  0x000000ee      0x181 CMakeFiles/stm32_template.dir/stm32/system_stm32f10x.c.o
- .debug_abbrev  0x0000026f      0x158 CMakeFiles/stm32_template.dir/main.c.o
+ .debug_abbrev  0x0000026f      0x1a1 CMakeFiles/stm32_template.dir/main.c.o
 
-.debug_aranges  0x00000000       0x90
+.debug_aranges  0x00000000       0xc0
  .debug_aranges
                 0x00000000       0x28 CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
  .debug_aranges
                 0x00000028       0x38 CMakeFiles/stm32_template.dir/stm32/system_stm32f10x.c.o
  .debug_aranges
-                0x00000060       0x30 CMakeFiles/stm32_template.dir/main.c.o
+                0x00000060       0x60 CMakeFiles/stm32_template.dir/main.c.o
 
 .debug_rnglists
-                0x00000000       0x60
+                0x00000000       0x85
  .debug_rnglists
                 0x00000000       0x19 CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
  .debug_rnglists
                 0x00000019       0x27 CMakeFiles/stm32_template.dir/stm32/system_stm32f10x.c.o
  .debug_rnglists
-                0x00000040       0x20 CMakeFiles/stm32_template.dir/main.c.o
+                0x00000040       0x45 CMakeFiles/stm32_template.dir/main.c.o
 
-.debug_macro    0x00000000     0x981c
+.debug_macro    0x00000000     0x983a
  .debug_macro   0x00000000       0x1d CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
  .debug_macro   0x0000001d      0xaba CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
  .debug_macro   0x00000ad7       0x62 CMakeFiles/stm32_template.dir/stm32/system_stm32f10x.c.o
@@ -330,18 +346,18 @@ LOAD linker stubs
  .debug_macro   0x00000f17       0x18 CMakeFiles/stm32_template.dir/stm32/system_stm32f10x.c.o
  .debug_macro   0x00000f2f      0xa8b CMakeFiles/stm32_template.dir/stm32/system_stm32f10x.c.o
  .debug_macro   0x000019ba     0x7def CMakeFiles/stm32_template.dir/stm32/system_stm32f10x.c.o
- .debug_macro   0x000097a9       0x73 CMakeFiles/stm32_template.dir/main.c.o
+ .debug_macro   0x000097a9       0x91 CMakeFiles/stm32_template.dir/main.c.o
 
-.debug_line     0x00000000      0x5d2
+.debug_line     0x00000000      0x761
  .debug_line    0x00000000       0xc4 CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
  .debug_line    0x000000c4      0x2ec CMakeFiles/stm32_template.dir/stm32/system_stm32f10x.c.o
- .debug_line    0x000003b0      0x222 CMakeFiles/stm32_template.dir/main.c.o
+ .debug_line    0x000003b0      0x3b1 CMakeFiles/stm32_template.dir/main.c.o
 
-.debug_str      0x00000000    0x335b3
- .debug_str     0x00000000    0x335b3 CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
+.debug_str      0x00000000    0x3373b
+ .debug_str     0x00000000    0x3373b CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
                                0x2f19 (size before relaxing)
- .debug_str     0x000335b3    0x33520 CMakeFiles/stm32_template.dir/stm32/system_stm32f10x.c.o
- .debug_str     0x000335b3    0x3349b CMakeFiles/stm32_template.dir/main.c.o
+ .debug_str     0x0003373b    0x33520 CMakeFiles/stm32_template.dir/stm32/system_stm32f10x.c.o
+ .debug_str     0x0003373b    0x33640 CMakeFiles/stm32_template.dir/main.c.o
 
 .comment        0x00000000       0x26
  .comment       0x00000000       0x26 CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
@@ -358,7 +374,7 @@ LOAD linker stubs
  .ARM.attributes
                 0x0000005a       0x2d CMakeFiles/stm32_template.dir/main.c.o
 
-.debug_frame    0x00000000      0x164
+.debug_frame    0x00000000      0x228
  .debug_frame   0x00000000       0x4c CMakeFiles/stm32_template.dir/stm32/startup/startup_stm32f10x_md.c.o
  .debug_frame   0x0000004c       0x98 CMakeFiles/stm32_template.dir/stm32/system_stm32f10x.c.o
- .debug_frame   0x000000e4       0x80 CMakeFiles/stm32_template.dir/main.c.o
+ .debug_frame   0x000000e4      0x144 CMakeFiles/stm32_template.dir/main.c.o
