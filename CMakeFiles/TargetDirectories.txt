@@ -1,0 +1,6 @@
+/home/theycallmesalute/github-cloned/stm32_pm2026/CMakeFiles/stm32_template.dir
+/home/theycallmesalute/github-cloned/stm32_pm2026/CMakeFiles/bin.dir
+/home/theycallmesalute/github-cloned/stm32_pm2026/CMakeFiles/hex.dir
+/home/theycallmesalute/github-cloned/stm32_pm2026/CMakeFiles/flash.dir
+/home/theycallmesalute/github-cloned/stm32_pm2026/CMakeFiles/edit_cache.dir
+/home/theycallmesalute/github-cloned/stm32_pm2026/CMakeFiles/rebuild_cache.dir
